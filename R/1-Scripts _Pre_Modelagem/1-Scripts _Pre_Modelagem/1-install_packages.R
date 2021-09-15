@@ -12,12 +12,14 @@ install.packages("devtools")
 install.packages("remotes")
 install.packages("rgdal")
 install.packages("maptools")
+remotes::install_github("marlonecobos/kuenm")
 
 ## Carregando pacotes necessários para instalação. 
 #  Cada vez que q uma sessão de R é iniciada, é preciso carregar os pacotes que serão usados, como abaixo:
 
 library(remotes)
 library(devtools)
+library(kuenm)
 
 ## Instalação modleR
 

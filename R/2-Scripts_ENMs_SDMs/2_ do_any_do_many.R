@@ -32,22 +32,24 @@ lista_arquivos <- list.files("./data/raster/raster/variaveis_cortadas_pratica/",
 vars_stack <-stack(lista_arquivos)
 
 ### Rodando a função do_any para um algoritmo (Maxent)
+#lembrar de colocar false para png, para não formar vários arquivos
 
 sp_maxent <- do_any(species_name = unique(sp_input[1]),
                     algorithm = "maxnet",
-                    #proj_data_folder = "./dados/raster/proj"
+                    #proj_data_folder = "./data/raster/raster/proj"
+                    #project_model = TRUE
                     predictors = vars_stack,
-                    models_dir = "./resultados",
+                    models_dir = "./output",
                     png_partitions = TRUE,
                     write_bin_cut = FALSE,
-                    equalize = TRUE,
-                    write_rda = TRUE)
+                    equalize = FALSE,
+                    write_rda = FALSE)
 
 ### Rodando a função do_amay para mais de um algoritmo (Maxent)
 
 many <- do_many(species_name = unique(sp_input[1]),
                 predictors = vars_stack,
-                models_dir = "./resultados",
+                models_dir = "./output",
                 png_partitions = TRUE,
                 write_bin_cut = FALSE,
                 write_rda = TRUE,
@@ -61,7 +63,7 @@ many <- do_many(species_name = unique(sp_input[1]),
                 rf = FALSE,
                 mahal = FALSE,
                 brt = FALSE,
-                #proj_data_folder = "./dados/raster/proj"
+                #proj_data_folder = "./data/raster/raster/proj"
                 equalize = TRUE)
 
 
